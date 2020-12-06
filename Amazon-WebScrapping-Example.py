@@ -16,7 +16,7 @@ def getURL(parametros):
 
     return url
 
-def xiaomiPocoX3NFC(item):
+def extract_data(item):
     """ Extract and return data from a single record"""
 
     # Description and URL
@@ -53,7 +53,7 @@ def main(parametros):
         results = soup.find_all('div', {'data-component-type' : 's-search-result'})
 
         for item in results:
-            record = xiaomiPocoX3NFC(item)
+            record = extract_data(item)
             if record:
                 records.append(record)
 
