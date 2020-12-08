@@ -65,4 +65,5 @@ def main(parametros):
         writer.writerow(['Description', 'Price', 'URL'])
         writer.writerows(records)
 
-main('Ultrawide Monitor 144hz')
+if __name__ == "__main__":
+    main('Ultrawide Monitor 144hz')
