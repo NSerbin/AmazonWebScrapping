@@ -30,8 +30,7 @@ def extract_data(item):
     except AttributeError:
         return
 
-    result = (description, price, url)
-    return result
+    return description, price, url
 
 def main(parametros):
     """ Run Main program Routine """
@@ -52,11 +51,7 @@ def main(parametros):
         soup = BeautifulSoup(browser.page_source, "html.parser")
         results = soup.find_all('div', {'data-component-type' : 's-search-result'})
 
-        for item in results:
-            record = extract_data(item)
-            if record:
-                records.append(record)
-
+        records.extend(record for item in results if (record := extract_data(item)))
     browser.close()
 
     #Save data to CSV
